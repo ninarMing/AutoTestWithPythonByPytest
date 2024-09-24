@@ -71,7 +71,6 @@ class TestLogin:
         print("结束")
         self.driver.quit()
         print("quit")
-        print("**********")
 
 
 
