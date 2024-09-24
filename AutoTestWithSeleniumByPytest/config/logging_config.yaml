@@ -1,0 +1,37 @@
+version: 1
+disable_existing_loggers: False
+formatters:
+  f_error:
+    format: "%(asctime)s[%(name)s][%(levelname)s]:%(message)s"
+  f_info:
+    format: "%(asctime)s[%(name)s][%(levelname)s]:%(message)s"
+handlers:
+  h_error:
+    class: logging.handlers.RotatingFileHandler
+    level: DEBUG
+    formatter: f_error
+    filename: ../log/error.log
+    # 5M
+    maxBytes: 5242880
+    backupCount: 4
+    encoding: utf8
+  h_info:
+    class: logging.handlers.TimedRotatingFileHandler
+    level: INFO
+    formatter: f_info
+    filename: ../log/info.log
+    when: D
+    backupCount: 4
+    encoding: utf8
+loggers:
+  logger_error:
+    level: DEBUG
+    handlers: [h_error]
+    propagate: no
+  logger_info:
+    level: INFO
+    handlers: [h_info]
+    propagate: no
+root:
+  level: INFO
+  handlers: [h_error,h_info]
