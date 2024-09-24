@@ -1,0 +1,2 @@
+# AutoTestWithPythonByPytest
+python,automation test
