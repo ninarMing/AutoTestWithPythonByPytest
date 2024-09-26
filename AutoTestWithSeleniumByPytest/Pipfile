@@ -1,0 +1,23 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+selenium = "*"
+webdriver-manager = "*"
+pyaml = "*"
+pytest = "*"
+pytest-timeout = "*"
+allure-pytest = "*"
+pytest-assume = "*"
+pytest-html = "*"
+pytest-xdist = "*"
+pytest-sugar = "*"
+pytest-dependency = "*"
+flaky = "*"
+
+[dev-packages]
+
+[requires]
+python_version = "3.12"
