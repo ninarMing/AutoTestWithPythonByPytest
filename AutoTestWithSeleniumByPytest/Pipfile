@@ -9,13 +9,13 @@ webdriver-manager = "*"
 pyaml = "*"
 pytest = "*"
 pytest-timeout = "*"
-allure-pytest = "*"
 pytest-assume = "*"
 pytest-html = "*"
 pytest-xdist = "*"
 pytest-sugar = "*"
 pytest-dependency = "*"
 flaky = "*"
+allure-pytest = "*"
 
 [dev-packages]
 

@@ -1,15 +1,18 @@
 #-*-coding:utf-8-*-
 
-
+#  pytest -v -s -k "retrieve or retrive" --html=report//report_1.html
 class BuildConfig:
     # 是否需要日志
     DEBUG = True
     LOGGING_PATH = "..\\log\\"
     LOGGING_CONFIG = "..\\config\\logging_config.yaml"
     LOG_IMAGE_PATH = "..\\log\\image_log\\"
+    # flaky 重试的最大次数以及最低通过成功次数
+    MAX_RUNS = 3
+    MIN_PASSES = 1
     # 待测试地址
-    TESTED_URL = "https://xxx/login.html"
-    ALREADY_LOGGED_URL = "https://xxx/desk.html"
+    TESTED_URL = "https://testbyd.inlinke.com:4433/byd/login.html"
+    ALREADY_LOGGED_URL = "https://testbyd.inlinke.com:4433/byd/desk.html"
     # 阿里云邮箱配置：
     ALIYUN_MAIL_USER = "xxx@inlinke.com"
     # 授权密码

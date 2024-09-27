@@ -1,6 +1,8 @@
 # -*- coding:utf-8 -*-
+import os
 import time
 
+import allure
 import pytest
 from flaky import flaky
 from selenium.webdriver.support import expected_conditions as EC
@@ -10,10 +12,12 @@ from business.login_business import LoginBusiness
 from config.build_config import BuildConfig
 from drivers.driver import Driver
 from util.log_util import LogUtil
-from util.wait_util import delay_rerun
+from util.wait_util import delay_rerun, get_parent_dir
 
+
+@allure.feature("登录")
 # 增加失败重试
-@flaky(max_runs=2, min_passes=1,rerun_filter=delay_rerun)
+@flaky(max_runs=BuildConfig.MAX_RUNS, min_passes=BuildConfig.MIN_PASSES,rerun_filter=delay_rerun)
 class TestLogin:
     def setup_class(self):
         self.driver = Driver().get_driver()
@@ -40,6 +44,8 @@ class TestLogin:
         print("必过")
         assert 1==1
 
+    @allure.story("登录失败")
+    @allure.title("用户名或密码错误")
     #@pytest.mark.skip
     @pytest.mark.parametrize("username,password",[("1000010","**20231"),("10000011","123456")])
     def test_login_username_or_password_error(self,fixture_accept_alert,username, password):
@@ -51,6 +57,8 @@ class TestLogin:
         assert str_alert == "用户名或密码错误"
         time.sleep(2)
 
+    @allure.story("登录成功")
+    @allure.title("普通用户名密码正确")
     #@pytest.mark.skip
     def test_login_username_or_password_success(self, fixture_sure_logout):
         username = "laijm"
@@ -77,5 +85,5 @@ class TestLogin:
 
 
 if __name__ == '__main__':
-    pytest.main(['-vs',"test_login.py"])
+    pytest.main(['-vs',"test_login.py","--alluredir=D:\\Projects\\report"])
 
